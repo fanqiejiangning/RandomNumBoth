@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,height=device-height,inital-scale=1.0,maximum-scale=1.0,user-scalable=no;">
+    <title>33以内的随机数</title>
+    <style>
+        .first{
+            color: #0190fe;
+        }
+        .redC{
+            color: red;font-weight: 800;
+        }
+    </style>
+</head>
+<body>
+<button onclick="getRandom()" >点击获取随机数</button>
+<div class="numBox" ></div>
+<script src="https://libs.baidu.com/jquery/1.9.1/jquery.min.js"></script>
+<script>
+    /*获取随机数*/
+    function RandomNumBoth(Min,Max){
+        var Range = Max - Min;
+        var Rand = Math.random();
+        var num = Min + Math.round(Rand * Range); //四舍五入
+        return num;
+    }
+
+
+    function getRandom(){
+        var a = (RandomNumBoth(0,1000) / 1000 + 177.5).toFixed(3);
+        var b = (((a-20)-150) / 170).toFixed(3);
+        $(".numBox .first").removeClass("first");
+        $(".numBox").prepend('<div class="first">( ( <span class="redC">'+a+'</span> - 20 ) - 150 ) / 170 = <span class="redC">'+b+'</span></div>')
+    }
+</script>
+</body>
+</html>
