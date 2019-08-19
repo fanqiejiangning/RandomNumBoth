@@ -9,14 +9,14 @@
         body {font-family: 'Helvetica Neue',Helvetica,sans-serif;font-size: 17px;line-height: 21px;color: #000; background-color: #efeff4;
         width: 100vw;overflow: hidden;margin:0;}
         .redC{color: red;font-weight: 800;}
-        .titles{padding: 20px;width: 100vw;text-align: center}
+        .titles{padding:10px 20px;width: 100vw;text-align: center}
         .titles .mui-btn{display: inline-block;}
         .title{ display: inline-block;width:25px;font-weight: 800;color: #0190fe;}
         .mui-card {font-size: 14px; position: relative; overflow: hidden;
-            margin:30px 10px 10px;border-radius: 2px;background-color: #fff;background-clip: padding-box;box-shadow: 0 1px 2px rgba(0,0,0,.3);}
+            margin:10px 10px 10px;border-radius: 2px;background-color: #fff;background-clip: padding-box;box-shadow: 0 1px 2px rgba(0,0,0,.3);}
         .mui-table-view {position: relative;margin-top: 0;margin-bottom: 0;padding-left: 0;list-style: none;background-color: #fff;}
         .mui-card .mui-table-view { margin-bottom: 0; border-top: 0;border-bottom: 0; border-radius: 6px;display: block;}
-        .mui-table-view-cell {position: relative;overflow: hidden;padding: 11px 15px;border-bottom: 1px solid #ccc;}
+        .mui-table-view-cell {position: relative;overflow: hidden;padding: 7px 15px;border-bottom: 1px solid #ccc;}
         .mui-table-view-cell>a:not(.mui-btn) {position: relative;text-decoration: none;
             display: block; overflow: hidden; margin: -11px -15px; padding: inherit;white-space: nowrap;text-overflow: ellipsis;color: inherit;}
         .mui-table-view-cell.mui-collapse .mui-collapse-content { position: relative;
@@ -32,16 +32,20 @@
     <div class="mui-card">
         <ul class="mui-table-view">
             <li class="mui-table-view-cell mui-collapse mui-active">
-                <a href="#" class="mui-navigate-right">公式1：((a-20)-150)/170=b</a>
+                <a href="#" class="mui-navigate-right">公式1：((a-b)-150)/170=c</a>
                 <div class="mui-collapse-content" id="numBox1"></div>
             </li>
             <li class="mui-table-view-cell mui-collapse mui-active">
-                <a href="#" class="mui-navigate-right">公式2：(19.500~20.500)a-b=c</a>
+                <a href="#" class="mui-navigate-right">公式2：<br>(19.600~20.400)(19.950~20.050)a-b=c</a>
                 <div class="mui-collapse-content" id="numBox2"></div>
             </li>
             <li class="mui-table-view-cell mui-collapse mui-active">
-                <a href="#" class="mui-navigate-right">公式3：(229.000~301.000)a-b=c</a>
+                <a href="#" class="mui-navigate-right">公式3：<br>(19.000~101.000)(99.600~100.400)a-b=c</a>
                 <div class="mui-collapse-content" id="numBox3"></div>
+            </li>
+            <li class="mui-table-view-cell mui-collapse mui-active">
+                <a href="#" class="mui-navigate-right">公式4：<br>(198.000~202.000)(199.200~200.800)a-b=c</a>
+                <div class="mui-collapse-content" id="numBox4"></div>
             </li>
         </ul>
     </div>
@@ -63,22 +67,30 @@
         $("#numBox1").empty();
         $("#numBox2").empty();
         $("#numBox3").empty();
+        $("#numBox4").empty();
         for(var i=0; i<3; i++){
-            var a = (RandomNumBoth(0,1000) / 1000 + 177.5).toFixed(3);
-            var b = (((a-20)-150) / 170).toFixed(3);
-            $("#numBox1").append('<div><span class="title">'+(i+1)+':</span>( ( <span class="redC">'+a+'</span> - 20 ) - 150 ) / 170 = <span class="redC">'+b+'</span></div>');
+            var a = (RandomNumBoth(154000,156999) / 1000).toFixed(3);
+            var b = (RandomNumBoth(19950,20050) / 1000).toFixed(3);
+            var c = (((a-b)-150) / 170).toFixed(3);
+            $("#numBox1").append('<div><span class="title">'+(i+1)+':</span>( ( <span class="redC">'+a+'</span> - <span class="redC">'+b+'</span> ) - 150 ) / 170 = <span class="redC">'+c+'</span></div>');
         }
         for(var j=0; j<3; j++){
-            var a1 = (RandomNumBoth(0,1000) / 1000 + 19.500).toFixed(3);
-            var b1 = (RandomNumBoth(0,100) / 1000 + 19.955).toFixed(3);
+            var a1 = (RandomNumBoth(19600,20400) / 1000 ).toFixed(3);
+            var b1 = (RandomNumBoth(19950,20050) / 1000 ).toFixed(3);
             var c1 = (a1 - b1).toFixed(3);
             $("#numBox2").append('<div><span class="title">'+(j+1)+':</span><span class="redC">'+a1+'</span> - <span class="redC">'+b1+'</span> = <span class="redC">'+c1+'</span></div>');
         }
         for(var k=0; k<3; k++){
-            var a2 = (RandomNumBoth(0,1000) / 1000 + 299.000).toFixed(3);
-            var b2 = (RandomNumBoth(0,100) / 1000 + 299.900).toFixed(3);
+            var a2 = (RandomNumBoth(99000,101000) / 1000 ).toFixed(3);
+            var b2 = (RandomNumBoth(99600,100400) / 1000 ).toFixed(3);
             var c2 = (a2 - b2).toFixed(3);
             $("#numBox3").append('<div><span class="title">'+(k+1)+':</span><span class="redC">'+a2+'</span> - <span class="redC">'+b2+'</span> = <span class="redC">'+c2+'</span></div>');
+        }
+        for(var l=0; l<3; l++){
+            var a3 = (RandomNumBoth(198000,202000) / 1000 ).toFixed(3);
+            var b3 = (RandomNumBoth(199200,200800) / 1000 ).toFixed(3);
+            var c3 = (a3 - b3).toFixed(3);
+            $("#numBox4").append('<div><span class="title">'+(l+1)+':</span><span class="redC">'+a3+'</span> - <span class="redC">'+b3+'</span> = <span class="redC">'+c3+'</span></div>');
         }
     }
 
