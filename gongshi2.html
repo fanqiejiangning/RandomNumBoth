@@ -44,7 +44,7 @@
                 <div class="mui-collapse-content" id="numBox3"></div>
             </li>
             <li class="mui-table-view-cell mui-collapse mui-active">
-                <a href="#" class="mui-navigate-right">公式4：<br>(198.000~202.000)(199.200~200.800)a-b=c</a>
+                <a href="#" class="mui-navigate-right">公式4：<br>(198.000~202.000)(199.200~200.800)(a-b)/b=c</a>
                 <div class="mui-collapse-content" id="numBox4"></div>
             </li>
         </ul>
@@ -89,8 +89,8 @@
         for(var l=0; l<3; l++){
             var a3 = (RandomNumBoth(198000,202000) / 1000 ).toFixed(3);
             var b3 = (RandomNumBoth(199200,200800) / 1000 ).toFixed(3);
-            var c3 = (a3 - b3).toFixed(3);
-            $("#numBox4").append('<div><span class="title">'+(l+1)+':</span><span class="redC">'+a3+'</span> - <span class="redC">'+b3+'</span> = <span class="redC">'+c3+'</span></div>');
+            var c3 = ((a3 - b3)/b3).toFixed(3);
+            $("#numBox4").append('<div><span class="title">'+(l+1)+':</span> ( <span class="redC">'+a3+'</span> - <span class="redC">'+b3+'</span> ) / <span class="redC">'+b3+'</span> = <span class="redC">'+c3+'</span></div>');
         }
     }
 
